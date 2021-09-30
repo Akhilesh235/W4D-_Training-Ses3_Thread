@@ -19,25 +19,37 @@ namespace W4D__Training_Ses3
             Console.WriteLine("Before Starting Thread"); 
            
             t.Start(); // will only be called after line 23
-            t1.Start(); //will only be called after line 21
+           // t1.Start(); //will only be called after line 21
             Console.WriteLine("Started Thread"); // will be called after line 19
-            t = new Thread(() => { Display2(); });
-            t.Start();
+                                                 // t = new Thread(() => { Display2(); });
+                                                 // t.Start();
+            for (int i = 0; i <5; i++)
+            {
+                Thread.Sleep(1000);
+                if (i == 2)
+                    t.Join();
+                Console.WriteLine("I am in main thread");       //the order of execution will be different
+            }
         }
 
         public void Display()               
         {
-            Console.WriteLine("I am in display");       //the order of execution will be different
+            for (int i = 0; i <10; i++)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("I am in display");       //the order of execution will be different
+            }
         }
+
 
         public void Display1()
         {
             Console.WriteLine("I am in display1");
         }
 
-        public void Display2()
+        public void display2()
         {
-            Console.WriteLine("I am in display2");
+            Console.WriteLine("i am in display2");
         }
     }
 
@@ -49,7 +61,7 @@ namespace W4D__Training_Ses3
         {
             ThreadExample t = new ThreadExample();
             Console.WriteLine("Callint the Normal Display Method");
-            t.Display();
+            //t.Display();
             Console.WriteLine("Callint the Thread Display Method");
             t.CallDisplayAsynchronously();
             Console.ReadLine();
