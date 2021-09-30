@@ -14,6 +14,7 @@ namespace W4D__Training_Ses3
             Console.WriteLine("In CallDisplayAsynchronously ");
             Thread t = new Thread(() => { Display(); }); //line 15 is the same as line 17 and 18 combined
             Thread tp = new Thread(new ParameterizedThreadStart(DisplayParameter));
+            tp.Priority = ThreadPriority.Lowest;
 
             ThreadStart start = new ThreadStart(Display1);            
             Thread t1 = new Thread(start);
@@ -39,7 +40,7 @@ namespace W4D__Training_Ses3
         {
             for (int i = 0; i < 10; i++)
             {
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
                 Console.WriteLine("I am in display");       //the order of execution will be different
             }
         }
@@ -48,7 +49,7 @@ namespace W4D__Training_Ses3
         {
             for (int i = 0; i <10; i++)
             {
-                Thread.Sleep(1000);
+               // Thread.Sleep(1000);
                 Console.WriteLine("I am in display");       //the order of execution will be different
             }
         }
